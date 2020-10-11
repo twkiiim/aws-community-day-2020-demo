@@ -9,6 +9,14 @@
 
 ![](./images/architecture-diagram.png)
 
+## 실행 흐름
+
+### 아이오닉 앱
+![](./images/demo-flow-ionic.png)
+
+### 어드민
+![](./images/demo-flow-admin.png)
+
 ## 데모 시연시의 빌드 환경
 
 - `Mac OS X 10.15.7` 에서 빌드합니다. 
@@ -57,3 +65,7 @@ export default {
 }
 ```
 - `ng serve` 를 통해 어드민 웹을 브라우저에서 실행합니다.
+
+## CDK 스택 삭제
+- `cdk destroy stepf-stack`
+- `cdk destroy appsync-stack`
