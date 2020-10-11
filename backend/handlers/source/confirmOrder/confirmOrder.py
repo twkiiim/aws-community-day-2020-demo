@@ -1,7 +1,8 @@
 import requests
+import os
 
-APPSYNC_API_ENDPOINT_URL = 'https://dpdsvjqyezfcnneh24e2i2z664.appsync-api.ap-northeast-1.amazonaws.com/graphql'
-APPSYNC_API_KEY = 'da2-sdxakljb4bbwtfllytf6m5jhnm'
+APPSYNC_API_ENDPOINT_URL = os.environ['APPSYNC_API_ENDPOINT_URL']
+APPSYNC_API_KEY = os.environ['APPSYNC_API_KEY']
 
 def handler(event, context):
     print(event)

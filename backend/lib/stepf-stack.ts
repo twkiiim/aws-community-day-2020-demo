@@ -5,6 +5,7 @@ import * as tasks from '@aws-cdk/aws-stepfunctions-tasks';
 import * as apigw from '@aws-cdk/aws-apigateway';
 import * as iam from '@aws-cdk/aws-iam';
 import { StackConfig } from './project-config';
+import { AppsyncStack } from './appsync-stack';
 
 enum LambdaFunctions {
   stripeWebhook = 'stripeWebhook',
@@ -20,11 +21,19 @@ export class StepFunctionsStack extends cdk.Stack {
 
   deployEnv: string = StackConfig.DEPLOY_ENV;
   
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps, refStack?: AppsyncStack) {
     super(scope, id, props);
 
     const lambdaFuncNames = Object.values(LambdaFunctions);
     const lambdaFuncMap = this.registerTasks(lambdaFuncNames);
+
+    lambdaFuncMap.get(LambdaFunctions.confirmOrder)!.addEnvironment('APPSYNC_API_ENDPOINT_URL', refStack!.APPSYNC_API_ENDPOINT_URL);
+    lambdaFuncMap.get(LambdaFunctions.confirmOrder)!.addEnvironment('APPSYNC_API_KEY', refStack!.APPSYNC_API_KEY);
+    lambdaFuncMap.get(LambdaFunctions.cancelOrder)!.addEnvironment('APPSYNC_API_ENDPOINT_URL', refStack!.APPSYNC_API_ENDPOINT_URL);
+    lambdaFuncMap.get(LambdaFunctions.cancelOrder)!.addEnvironment('APPSYNC_API_KEY', refStack!.APPSYNC_API_KEY);
+    lambdaFuncMap.get(LambdaFunctions.orderTransactionDone)!.addEnvironment('APPSYNC_API_ENDPOINT_URL', refStack!.APPSYNC_API_ENDPOINT_URL);
+    lambdaFuncMap.get(LambdaFunctions.orderTransactionDone)!.addEnvironment('APPSYNC_API_KEY', refStack!.APPSYNC_API_KEY);
+
     const taskStates = this.registerTaskStates(lambdaFuncMap, lambdaFuncNames);
     
     const startOrderTransaction = new stepf.Parallel(this, `startOrderTransaction-${this.deployEnv}`, { resultPath: '$.parallelTasks' });

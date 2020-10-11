@@ -8,11 +8,9 @@ from pynamodb.attributes import UnicodeAttribute, NumberAttribute, BooleanAttrib
 from pynamodb.constants import STREAM_NEW_AND_OLD_IMAGE
 
 import os
-# ddb_table_name = os.environ['DYNAMODB_TABLE_NAME']
-ddb_table_name = 'aws-commday-2020-order'
+ddb_table_name = os.environ['DYNAMODB_ORDER_TABLE_NAME']
 
 local_tz = pytz.timezone('Asia/Tokyo')
-
 
 ORDER_STATUS_INITIALIZED = 'INITIALIZED'
 ORDER_STATUS_SUCCEEDED = 'SUCCEEDED'

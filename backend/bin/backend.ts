@@ -16,9 +16,9 @@ const generateStackProps = (stackName: string): cdk.StackProps => {
     }
 }
 
+stackName = 'appsync-stack';
+const appsyncStack = new AppsyncStack(app, stackName, generateStackProps(stackName));
 
 stackName = 'stepf-stack';
-new StepFunctionsStack(app, stackName, generateStackProps(stackName));
+const stepfunctionsStack = new StepFunctionsStack(app, stackName, generateStackProps(stackName), appsyncStack);
 
-stackName = 'appsync-stack';
-new AppsyncStack(app, stackName, generateStackProps(stackName));

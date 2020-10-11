@@ -17,6 +17,9 @@ enum AppSyncMutation {
 }
 
 export class AppsyncStack extends cdk.Stack {
+
+  public readonly APPSYNC_API_ENDPOINT_URL: string;
+  public readonly APPSYNC_API_KEY: string;
   
   deployEnv: string = StackConfig.DEPLOY_ENV;
 
@@ -81,12 +84,14 @@ export class AppsyncStack extends cdk.Stack {
 
 
     // print out the AppSync information to the terminal
+    this.APPSYNC_API_ENDPOINT_URL = api.graphqlUrl;
     new cdk.CfnOutput(this, `GraphQLAPIURL-${this.deployEnv}`, {
       value: api.graphqlUrl
     });
- 
+    
+    this.APPSYNC_API_KEY = api.apiKey!;
     new cdk.CfnOutput(this, `GraphQLAPIKey-${this.deployEnv}`, {
-      value: api.apiKey || ''
+      value: api.apiKey!
     });
   }
 }
