@@ -1,0 +1,14 @@
+# this is an auto generated file. This will be overwritten
+query GetOrderStatus($id: ID!) {
+  getOrderStatus(id: $id) {
+    id
+    status
+    transactionStatus
+    paymentId
+    itemId
+    title
+    subtitle
+    price
+    createdAt
+  }
+}

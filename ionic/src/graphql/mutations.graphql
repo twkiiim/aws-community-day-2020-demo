@@ -1,0 +1,74 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateOrderReservation($input: CreateOrderReservationInput!) {
+  createOrderReservation(input: $input) {
+    order {
+      id
+      status
+      transactionStatus
+      paymentId
+      itemId
+      title
+      subtitle
+      price
+      createdAt
+    }
+    paymentIntent {
+      amount
+      amount_capturable
+      amount_received
+      charges
+      client_secret
+      confirmation_method
+      created
+      currency
+      customer
+      description
+      id
+      invoice
+      metadata
+      object
+      payment_method_options
+      payment_method_types
+      status
+    }
+  }
+}
+mutation ConfirmOrderReservation($id: ID!) {
+  confirmOrderReservation(id: $id) {
+    id
+    status
+    transactionStatus
+    paymentId
+    itemId
+    title
+    subtitle
+    price
+    createdAt
+  }
+}
+mutation CancelOrderReservation($id: ID!) {
+  cancelOrderReservation(id: $id) {
+    id
+    status
+    transactionStatus
+    paymentId
+    itemId
+    title
+    subtitle
+    price
+    createdAt
+  }
+}
+mutation FinalizeOrder($id: ID!) {
+  finalizeOrder(id: $id) {
+    id
+    status
+    transactionStatus
+    paymentId
+    itemId
+    title
+    subtitle
+    price
+    createdAt
+  }
+}

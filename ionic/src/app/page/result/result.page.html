@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Serverless Mall</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Payment Result</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content *ngIf="orderSucceededYn">
+      <ion-label color="primary">Thank you for your purchase</ion-label>
+
+      <div style="margin-top: 30px">
+        <ion-button expand="block" color="primary" (click)="back()">Back to Main Page</ion-button>
+      </div>
+    </ion-card-content>
+
+    <ion-card-content *ngIf="orderFailedYn">
+      <ion-label color="danger">Sorry, there was some problems. Please retry the purchase</ion-label>
+      
+      <div style="margin-top: 30px">
+        <ion-button expand="block" color="danger" (click)="back()">Back to Main Page</ion-button>
+      </div>
+    </ion-card-content>
+    
+  </ion-card>
+</ion-content>
+  

@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Serverless Mall
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let item of items; let i=index;">
+
+    <div class="center">
+      <img src="{{ item.img }}">
+    </div>
+    <ion-card-header>
+      <ion-card-title>{{ item.title }}</ion-card-title>
+      <ion-card-subtitle>{{ item.subtitle }}</ion-card-subtitle>
+      <ion-card-subtitle>Price: ${{ item.price }}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{ item.desc }}
+
+      <div>
+        <ion-button expand="block" color="primary" (click)="next(i)">Purchase</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+  
+</ion-content>
