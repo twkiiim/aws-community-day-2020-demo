@@ -75,6 +75,24 @@ export default {
 
 ![](./images/stripe-test-card.png)
 
+## Amplify 를 활용한 AppSync API 생성
+- AWS AppSync CLI 및 Amplify CLI 를 활용하면, `amplify init` 을 하지 않은 프로젝트에서도 `amplify codegen` 의 혜택을 누릴 수 있습니다.
+- 먼저, 프로젝트 루트폴더에서 `schema.json` 를 생성합니다.
+```sh
+$ aws appsync get-introspection-schema --api-id ${APPSYNC_APP_ID} --format JSON schema.json
+```
+- `schema.json` 이 생성되었다면 API 코드를 생성합니다.
+```sh
+$ amplify codegen add
+```
+- 한번 코드를 생성했다면, AppSync 의 GraphQL 스키마가 변경될 때마다 아래의 명령어조합을 활용할 수 있습니다.
+```sh
+$ aws appsync get-introspection-schema --api-id ${APPSYNC_APP_ID} --format JSON schema.json
+
+$ amplify codegen
+```
+
+
 ## CDK 스택 삭제
 - `cdk destroy stepf-stack`
 - `cdk destroy appsync-stack`
