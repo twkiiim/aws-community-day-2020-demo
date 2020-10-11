@@ -1,0 +1,75 @@
+enum OrderStatus {
+  INITIALIZED
+  SUCCEEDED
+  FAILED
+}
+
+enum OrderTransactionStatus {
+  INITIALIZED
+  BEING_PROCESSED
+  DONE
+}
+
+type Order {
+  id: ID!
+  
+  status: OrderStatus!
+  transactionStatus: OrderTransactionStatus!
+  paymentId: String!
+  
+  itemId: Int!
+  title: String!
+  subtitle: String!
+  price: Int!
+
+  createdAt: String
+}
+
+type OrderReserved {
+  order: Order!
+  paymentIntent: StripePaymentIntent!
+}
+
+# This is still an incomplete type, but just enough for demo purpose
+type StripePaymentIntent {
+  amount: Int
+  amount_capturable: Int
+  amount_received: Int
+  charges: AWSJSON
+  client_secret: String
+  confirmation_method: String
+  created: Int
+  currency: String
+  customer: String
+  description: String
+  id: String
+  invoice: String
+  metadata: AWSJSON
+  object: String
+  payment_method_options: AWSJSON
+  payment_method_types: [String]
+  status: String
+}
+
+input CreateOrderReservationInput {
+  itemId: Int!
+  title: String!
+  subtitle: String!
+  price: Int!
+}
+
+type Query {
+  getOrderStatus(id: ID!): Order
+}
+
+type Mutation {
+  createOrderReservation(input: CreateOrderReservationInput!): OrderReserved
+  confirmOrderReservation(id: ID!): Order
+  cancelOrderReservation(id: ID!): Order
+  finalizeOrder(id: ID!): Order
+}
+
+type Subscription {
+  onOrderFinalized: Order
+    @aws_subscribe(mutations: ["finalizeOrder"])
+}
