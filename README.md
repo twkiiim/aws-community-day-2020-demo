@@ -66,6 +66,10 @@ export default {
 ```
 - `ng serve` 를 통해 어드민 웹을 브라우저에서 실행합니다.
 
+## Stripe 카드 결제 테스트
+- Stripe 에서 제공하는 테스트 카드번호는 아래와 같습니다.
+![](./images/stripe-test-card.png)
+
 ## CDK 스택 삭제
 - `cdk destroy stepf-stack`
 - `cdk destroy appsync-stack`
