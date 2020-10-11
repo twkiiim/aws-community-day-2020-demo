@@ -12,7 +12,11 @@
 ## 실행 흐름
 
 ### 아이오닉 앱
+
+프로덕션 환경이 아닌 개발(테스트) 환경에서는 Stripe 의 webhook 기능을 활용할 수 없어서, 본 데모에서는 `5-a. 결제 완료 웹훅` 부분을 ionic 앱에서 직접 요청하는 방식으로 시연하였습니다.
+
 ![](./images/demo-flow-ionic.png)
+
 
 ### 어드민
 ![](./images/demo-flow-admin.png)
@@ -68,6 +72,7 @@ export default {
 
 ## Stripe 카드 결제 테스트
 - Stripe 에서 제공하는 테스트 카드번호는 아래와 같습니다.
+
 ![](./images/stripe-test-card.png)
 
 ## CDK 스택 삭제
