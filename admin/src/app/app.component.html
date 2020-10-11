@@ -1,0 +1,12 @@
+<div>
+  <h1>ORDER BEING RECEIVED...</h1>
+
+  <ul>
+    <li *ngFor="let item of items">
+      <p><strong>{{ item.title }}</strong></p>
+      <p>{{ item.subtitle }}</p>
+      <p>${{ item.price }}</p>
+      <p>{{ item.createdAt }}</p>
+    </li>
+  </ul>
+</div>

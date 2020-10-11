@@ -1,0 +1,14 @@
+# this is an auto generated file. This will be overwritten
+subscription OnOrderFinalized {
+  onOrderFinalized {
+    id
+    status
+    transactionStatus
+    paymentId
+    itemId
+    title
+    subtitle
+    price
+    createdAt
+  }
+}
