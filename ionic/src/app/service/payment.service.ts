@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import awsconfig from '../../aws-exports';
+
 declare let Stripe;
 
 @Injectable({
@@ -43,7 +45,7 @@ export class PaymentService {
   }
 
   stripeManualWebhook(paymentIntent: any): Observable<any> {
-    const url = 'https://hwrscxw9wb.execute-api.ap-northeast-1.amazonaws.com/prod/stripe-webhook';
+    const url = `${awsconfig.custom_stripe_webhook_url}/stripe-webhook`;
     const data = {
       type: 'payment_intent.' + paymentIntent.status,
       data: {
