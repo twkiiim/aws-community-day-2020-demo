@@ -21,7 +21,7 @@
 
 
 ### 管理者 Web
-![](./images/demo-flow-admin.png)
+![](./images/demo-flow-admin.jp.png)
 
 ## デモ実行環境
 
