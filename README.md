@@ -1,5 +1,9 @@
 # 온라인 주문 서비스를 서버리스 아키텍쳐로 구축하기 데모 프로젝트
 
+## Other Languages
+- [日本語はこちらをご覧ください](./README.jp.md)
+- English in progress.
+
 ## 프로젝트 개요
 
 - AWS Community Day Online 2020 에서 공개한 데모 프로젝트의 Github 레포지토리입니다. 
